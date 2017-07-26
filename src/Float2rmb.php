@@ -64,6 +64,10 @@ class Float2rmb
                 $b = substr($t,-1);
                 $lS = (int) log10($base);
                 if ($b >= 1) {
+                    //超出范围
+                    if (!isset(self::$l[$lS])) {
+                        throw new \Exception('数据超出范围');
+                    }
                     $rmb = self::$c[$b] . self::$l[$lS] . $rmb;
                 }
                 else
