@@ -58,18 +58,11 @@ class Float2rmb
         $rmb = '';
         $loop = true;
         $base = '0.01';
-        $i = 1;
         while ($loop) {
             $t = bcdiv($string,$base,0);
-            echo PHP_EOL;
-            echo $t . '[' . $i++ . ']';
-            echo PHP_EOL;
             if ($t >= 1) {
                 $b = substr($t,-1);
                 $lS = (int) log10($base);
-                echo PHP_EOL;
-                echo $b . '[' . $lS . ']';
-                echo PHP_EOL;
                 if ($b >= 1) {
                     $rmb = self::$c[$b] . self::$l[$lS] . $rmb;
                 }
@@ -79,6 +72,7 @@ class Float2rmb
                         if (mb_strpos($rmb,'亿') === false) {
                             $rmb = '亿' . $rmb;
                         }
+                        //存在 贰亿万这样的情况
                         if(mb_strpos($rmb,'亿万') !== false) {
                             $rmb = str_replace('亿万','亿',$rmb);
                         }
@@ -100,12 +94,6 @@ class Float2rmb
             $rmb = mb_substr($rmb,0,mb_strlen($rmb) -1) . '整';
         }
         return $rmb;
-    }
-
-    protected static function sConvert($num)
-    {
-        self::check();
-
     }
 
     /**
