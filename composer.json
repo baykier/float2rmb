@@ -1,0 +1,19 @@
+{
+    "name": "baykier/float2rmb",
+    "description": "数字金额转换为大写人民币",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "baykier",
+            "email": "1035666345@qq.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-4": {
+            "Baykier\\Float2rmb\\": "src"
+        }
+    },
+    "require": {}
+}
